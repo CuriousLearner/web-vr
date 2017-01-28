@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>WebVR &amp; A-Frame JS</title>
+    <meta name="description" content="Activate Mozilla | WebVR and A-FrameJS">
+    <meta name="author" content="Sanyam Khurana">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/mozilla.css" id="theme">
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section>
+                <h1>WebVR &amp; A-Frame JS</h1>
+                <p>
+                    <small>
+                        Created by
+                            <a href="http://www.SanyamKhurana.com">Sanyam Khurana</a> |
+                            <a href="http://twitter.com/ErSanyamKhurana">@ErSanyamKhurana</a> |
+                            <a href="http://github.com/CuriousLearner">@CuriousLearner</a>
+                    </small>
+                </p>
+            </section>
+            <section id="fr1">
+                <h2>Who am I?</h2>
+                <p>
+                <ul>
+                    <li class="fragment">One of YOU! -- Part of the community</li>
+                    <li class="fragment">Mozilla Rep</li>
+                    <li class="fragment">Open Source Enthusiast</li>
+                    <li class="fragment">Also known as "CuriousLearner"</li>
+                </ul>
+                </p>
+            </section>
+            <section id="fr2">
+                <h2>What is Virtual Reality?</h2>
+                <p>
+                <ul>
+                    <li class="fragment">Immersing into VR is a perception of being physically present in a non-physical world.</li>
+                    <li class="fragment">We surround user of the VR system in images, sound or other stimuli that provide perception of being surrounded in a virtual world.</li>
+                    <li class="fragment">Visual Immersion + Input Immersion</li>
+                </ul>
+                </p>
+            </section>
+            <section id="">
+                <h2>Visual Immersion</h2>
+                <img src="assets/img/visual-immersion.png" />
+            </section>
+            <section>
+                <h2>Input Immersion</h2>
+                <img src="assets/img/input-immersion.jpg" />
+            </section>
+            <section>
+                <h2>What is Web VR?</h2>
+                <ul>
+                    <li>Experimental JavaScript API</li>
+                    <li>Renders web content in Virtual Reality</li>
+                    <li>You see device-agnostic VR in Web Browsers</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Focus on Visual Immersion</h2>
+                <ul>
+                    <li class="fragment">Support both WebGL and HTML/CSS content</li>
+                    <li class="fragment">Allow High End web experience on browser with VR</li>
+                    <ul>
+                        <li class="fragment">CSS 3D</li>
+                        <li class="fragment">VR Browsing</li>    
+                        <li class="fragment">Responsive sites</li>    
+                        <li class="fragment">Game Engines</li>    
+                        <li class="fragment">ASM JS</li>    
+                    </ul>
+                </ul>
+            </section>
+            <section>
+                <h2>Supported on these browsers</h2>
+                <p>
+                    <img src="assets/img/chrome.jpeg" />
+                    <img src="assets/img/firefox.png" />
+                    <img src="assets/img/edge-logo.jpeg" />
+                </p>
+            </section>
+            <section>
+                <h2>Web VR API</h2>
+                <ul>
+                    <li class="fragment">hardwareUnitId: Unique identifier per Hardware Device</li>
+                    <li class="fragment">deviceId: Unique ID for specific sensor/device on hardware</li>
+                    <li class="fragment">deviceName: User-readable name identifying the sensor</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Field of View (FOV) for VR devices</h2>
+                <ul>
+                    <li>Configuring FOV that rendering device would use</li>
+                    <pre><code class="hljs" data-trim>setFieldOfView(left, right, znear, zfar)</code></pre> 
+                    <li>Getting recommended and maximum FOV that device can render:</li>
+                    <pre><code class="hljs" data-trim>getRecommendedEyeFieldOfView(whichEye)</code></pre> 
+                    <pre><code class="hljs" data-trim>getMaximumEyeFieldOfView(whichEye)</code></pre> 
+                    <pre><code class="hljs" data-trim>getCurrentEyeFieldOfView(whichEye)</code></pre> 
+                </ul>
+            </section>
+            <section>
+                <section>
+                    <p class="fragment">Way too much work!</p>
+                    <p class="fragment">Let's use A Frame instead</p>
+                    <p class="fragment">A web framework for building VR Experiences</p>
+                </section>
+                <section>
+                    <h3>Include it in your web page:</h3>
+                    <pre><code class="hljs" data-trim>&lt;script src="https://aframe.io/releases/0.3.2/aframe.min.js"&gt;&lt;/script&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Set up a scene</h3>
+                    <pre><code class="hljs" data-trim>&lt;a-scene&gt;&lt;/a-scene&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Create a box</h3>
+                    <pre><code class="hljs" data-trim>&lt;a-box color=“#EEEFDE3” height=“10” width=“4” depth=“2” position=“-10 2 -5” rotation=“0 0 45” scale=“2 0.5 3”&gt;&lt;/a-box&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Giving it a texture</h3>
+                    <pre><code class="hljs" data-trim>&lt;a-box color=“#EEEFDE” height=“10” width=“4” depth=“2” position=“-10 2 -5” rotation=“0 0 45” scale=“2 0.5 3” src=“texture.png”&gt;&lt;/a-box&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Leveraging Asset Management</h3>
+                    <pre><code class="hljs" data-trim>&lt;a-assets&gt;&lt;/a-assets&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Adding image assets</h3>
+                    <pre><code class="hljs" data-trim>&lt;a-assets&gt;&lt;img id=“img1” src=“logo.png”&gt; &lt;/a-assets&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>Now let's use assets</h3>
+                    <pre><code class="hljs" data-trim>
+                        &lt;a-box color=“#EEEFDE” height=“10” width=“4” depth=“2” position=“-10 2 -5” rotation=“0 0 45” scale=“2 0.5 3” src=“#img1”&gt; &lt;/a-box&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Adding Animations</h3>
+                    <pre><code class="hljs" data-trim>
+                        &lt;a-animation attribute="rotation" repeat="indefinite" to="0 360 0"&gt; &lt;/a-animation&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Adding Background</h3>
+                    <pre><code class="hljs" data-trim>
+                        &lt;a-sky color=“#73f7dd”&gt; &lt;/a-sky&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Adding Background Image</h3>
+                    <pre><code class="hljs" data-trim>
+                        &lt;a-sky src=“room.jpg”&gt; &lt;/a-sky&gt;
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Adding some music</h3>
+                    <pre><code class="hljs" data-trim>
+                        &lt;a-entity sound=“src: #bg-music; autoplay: true; volume: 10; loop: true”&gt; &lt;/a-entity&gt;
+                    </code></pre>
+                </section>
+            </section>
+            <section>
+                <h2>Where to go from here?</h2>
+                <p>
+                <ul>
+                    <li>A-Frame Website: <a href="https://aframe.io">https://aframe.io</a></li>
+                    <li>MozVR: <a href="https://mozvr.com">https://mozvr.com</a></li>
+                    <li>Web VR Slack channel: <a href="https://webvr-slack.herokuapp.com">https://webvr-slack.herokuapp.com</a></li>
+                </ul>
+                </p>
+            </section>
+            <section style="text-align: left;">
+                <h1>THE END</h1>
+                <p>
+                    Questions?
+                <hr>
+                Shout out on Twitter: <br><a href="http://www.twitter.com/ErSanyamKhurana">@ErSanyamKhurana</a> | #MozNIEC
+                <hr>
+                Shoot a mail at: <br><a href="mailto:Sanyam@MozPacers.org">Sanyam@MozPacers.org</a> | <a href="mailto:Sanyam@SanyamKhurana.com<br>">Sanyam@SanyamKhurana.com</a>
+                </p>
+                <hr>
+                <p>My websites: <br><a href="http://www.SanyamKhurana.com">www.SanyamKhurana.com</a> | <a href="http://www.TheGeekyWay.com">www.TheGeekyWay.com</a></p>
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            // Optional reveal.js plugins
+            dependencies: [
+                {
+                    src: 'lib/js/classList.js', condition: function () {
+                    return !document.body.classList;
+                }
+                },
+                {
+                    src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+                },
+                {
+                    src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+                },
+                {
+                    src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+                },
+                {src: 'plugin/zoom-js/zoom.js', async: true},
+                {src: 'plugin/notes/notes.js', async: true}
+            ]
+        });
+
+    </script>
+
+</body>
+</html>
